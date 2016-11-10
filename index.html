@@ -1,6 +1,16 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.3/css/bulma.min.css">
 <script src='https://code.jquery.com/jquery-3.1.1.slim.min.js'></script>
+<style>
+  /* custom this page only */
+  .button {
+    margin-bottom: 10px;
+  }
+  div.notification {
+    width: 50%;
+    margin: 0px auto;
+  }
+</style>
 
 <section class="hero is-large">
   <!-- Hero header: will stick at the top -->
@@ -30,7 +40,7 @@
           Bulma.io
         </a>
         <span class="nav-item">
-          <a class="button" href='https://github.com/diewland/vegeta.js'>
+          <a class="button" href='https://github.com/diewland/vegeta-js'>
             <span class="icon">
               <i class="fa fa-github"></i>
             </span>
@@ -45,17 +55,15 @@
   <div class="hero-body">
     <div class="container has-text-centered">
 
-      <h1 class="title">
-        Notifications
-      </h1>
-      <div class='vegeta-msg'></div>
-      <br />
+      <h1 class="title">Notifications</h1>
       <a class='button is-large' id='btn-default' href='#/'>default</a>
       <a class='button is-info is-large' id='btn-info' href='#/'>info</a>
       <a class='button is-primary is-large' id='btn-primary' href='#/'>primary</a>
       <a class='button is-success is-large' id='btn-success' href='#/'>success</a>
       <a class='button is-warning is-large' id='btn-warning' href='#/'>warning</a>
       <a class='button is-danger is-large' id='btn-danger' href='#/'>danger</a>
+
+      <div class='trunk'>Paste wherever you wanna notify</div>
 
     </div>
   </div>
@@ -65,19 +73,30 @@
 <script src='./vegeta.js'></script>
 <script>
 
-  // init
+  // new vegeta!
   var v = new Vegeta();
 
-  // nav toggle
-  v.bind_nav_toggle();
+  v.bind_nav_toggle();    // bind navigation toggle
+  v.bind_notif('.trunk'); // bind notification to <div class='.trunk' />
 
-  // notifications
-  v.bind_notif('.vegeta-msg');
-  $('#btn-default').click(function(){ v.notif('Default notification'); });
-  $('#btn-info').click(function(){ v.notif_info('Info notification'); });
-  $('#btn-primary').click(function(){ v.notif_primary('Primary notification'); });
-  $('#btn-success').click(function(){ v.notif_success('Success notification'); });
-  $('#btn-warning').click(function(){ v.notif_warning('Warning notification'); });
-  $('#btn-danger').click(function(){ v.notif_danger('Danger notification'); });
+  // call notifications
+  $('#btn-default').click(function(){
+    v.notif('Default message');
+  });
+  $('#btn-info').click(function(){
+    v.notif_info('Info message');
+  });
+  $('#btn-primary').click(function(){
+    v.notif_primary('Primary message');
+  });
+  $('#btn-success').click(function(){
+    v.notif_success('Success message');
+  });
+  $('#btn-warning').click(function(){
+    v.notif_warning('Warning message');
+  });
+  $('#btn-danger').click(function(){
+    v.notif_danger('Danger message');
+  });
 
 </script>
