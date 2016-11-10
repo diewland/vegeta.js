@@ -32,3 +32,5 @@ $('#btn-danger').click(function(){
   v.notif_danger('Danger message');
 });
 ```
+### demo
+:zap: <a href='https://diewland.github.io/vegeta-js/'>LIVE</a>
