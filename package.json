@@ -1,0 +1,25 @@
+{
+  "name": "vegeta.js",
+  "version": "1.0.1",
+  "description": "JavaScript for Bulma.io",
+  "main": "vegeta.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diewland/vegeta.js.git"
+  },
+  "keywords": [
+    "bulma",
+    "js",
+    "css",
+    "ui"
+  ],
+  "author": "diewland",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/diewland/vegeta.js/issues"
+  },
+  "homepage": "https://github.com/diewland/vegeta.js#readme"
+}

@@ -2,7 +2,7 @@
 JavaScript for Bulma.io
 
 ### installation
-```npm install vegeta-js```
+```npm install vegeta.js```
 
 ## example
 ```javascript
