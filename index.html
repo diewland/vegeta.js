@@ -1,0 +1,83 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://bulma.io/css/bulma-docs.css">
+<script src='https://code.jquery.com/jquery-3.1.1.slim.min.js'></script>
+
+<section class="hero is-large">
+  <!-- Hero header: will stick at the top -->
+  <div class="hero-head">
+    <header class="nav">
+      <div class="nav-left">
+        <a class="nav-item is-brand" href="#">
+          <h1 class='title'>Vegeta.js</h1>
+        </a>
+      </div>
+      <div class="nav-center">
+        <a class="nav-item" href="#">
+          JavaScript for Bulma.io
+          &nbsp;
+          <span class="icon">
+            <i class="fa fa-cogs"></i>
+          </span>
+        </a>
+      </div>
+      <span class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+      <div class="nav-right nav-menu">
+        <a class="nav-item" href="http://bulma.io/">
+          Bulma.io
+        </a>
+        <span class="nav-item">
+          <a class="button" href='https://github.com/diewland/vegeta.js'>
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+            <span>GitHub</span>
+          </a>
+        </span>
+      </div>
+    </header>
+  </div>
+
+  <!-- Hero content: will be in the middle -->
+  <div class="hero-body">
+    <div class="container has-text-centered">
+
+      <h1 class="title">
+        Notifications
+      </h1>
+      <div class='vegeta-msg'></div>
+      <br />
+      <a class='button is-large' id='btn-default' href='#/'>default</a>
+      <a class='button is-info is-large' id='btn-info' href='#/'>info</a>
+      <a class='button is-primary is-large' id='btn-primary' href='#/'>primary</a>
+      <a class='button is-success is-large' id='btn-success' href='#/'>success</a>
+      <a class='button is-warning is-large' id='btn-warning' href='#/'>warning</a>
+      <a class='button is-danger is-large' id='btn-danger' href='#/'>danger</a>
+
+    </div>
+  </div>
+
+</section>
+
+<script src='./vegeta.js'></script>
+<script>
+
+  // init
+  var v = new Vegeta();
+
+  // nav toggle
+  v.bind_nav_toggle();
+
+  // notifications
+  v.bind_notif('.vegeta-msg');
+  $('#btn-default').click(function(){ v.notif('Default notification'); });
+  $('#btn-info').click(function(){ v.notif_info('Info notification'); });
+  $('#btn-primary').click(function(){ v.notif_primary('Primary notification'); });
+  $('#btn-success').click(function(){ v.notif_success('Success notification'); });
+  $('#btn-warning').click(function(){ v.notif_warning('Warning notification'); });
+  $('#btn-danger').click(function(){ v.notif_danger('Danger notification'); });
+
+</script>
