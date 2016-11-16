@@ -33,4 +33,4 @@ $('#btn-danger').click(function(){
 });
 ```
 ### demo
-:zap: <a href='https://diewland.github.io/vegeta-js/'>LIVE</a>
+:zap: <a href='https://diewland.github.io/vegeta.js/'>LIVE</a>
