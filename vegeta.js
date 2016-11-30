@@ -8,7 +8,7 @@ function Vegeta(){
   };
   
   function resetClasses(el){
-    var classes = ["is-danger","is-success","is-primary","is-warning","is-info"];
+    var classes = ["is-default","is-danger","is-success","is-primary","is-warning","is-info"];
     for (var i = 0; i < classes.length; i ++){
       el.classList.remove(classes[i]);
     }
