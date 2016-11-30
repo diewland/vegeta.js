@@ -7,6 +7,13 @@ function Vegeta(){
     return document.querySelector(sel) || document.createElement("div");
   };
   
+  function resetClasses(el){
+    var classes = ["is-danger","is-success","is-primary","is-warning","is-info"];
+    for (var i = 0; i < classes.length; i ++){
+      el.classList.remove(classes[i]);
+    }
+  }
+    
   this.bind_nav_toggle = function(){
     var $toggle = $('.nav-toggle');
     var $menu = $('.nav-menu');
@@ -31,6 +38,7 @@ function Vegeta(){
   this.notif = function(msg, type){
     $bal = $('#vgt-balloon');
     if(type){
+      resetClasses($bal);
       $bal.classList.add('is-'+type);
     }
     $bal.classList.add('notification');
