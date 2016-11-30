@@ -24,7 +24,7 @@ function Vegeta(){
       </div>
     `;
     $('#vgt-balloon .delete').addEventListener('click',function(){
-      $('#vgt-balloon').style.visibility = "hidden";
+      $('#vgt-balloon').style.display = "none";
     });
   };
   
@@ -35,7 +35,7 @@ function Vegeta(){
     }
     $bal.classList.add('notification');
     $bal.innerHTML = msg;
-    $bal.style.visibility = "visible";
+    $bal.style.display = "";
   }
   this.notif_info = function(msg){
     this.notif(msg, 'info');
