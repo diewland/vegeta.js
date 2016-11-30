@@ -46,6 +46,9 @@ function Vegeta(){
     $('.msg',$bal).innerHTML = msg;
     $bal.style.display = "";
   }
+  this.notif_default = function(msg){
+    this.notif(msg, 'default');
+  }
   this.notif_info = function(msg){
     this.notif(msg, 'info');
   }
