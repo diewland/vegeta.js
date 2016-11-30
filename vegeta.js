@@ -1,10 +1,11 @@
 function Vegeta(){
   
-  var $ = function(sel){
+  var $ = function(sel, parent){
+    parent = parent || document;
     if (sel[0] == "#" && sel.indexOf(' ') == -1){// #id => by ID (faster), else query selector
-      return document.getElementById( sel.slice(1) ) || document.createElement("div");
+      return parent.getElementById( sel.slice(1) ) || parent.createElement("div");
     }
-    return document.querySelector(sel) || document.createElement("div");
+    return parent.querySelector(sel) || parent.createElement("div");
   };
   
   function resetClasses(el){
@@ -27,7 +28,7 @@ function Vegeta(){
     $(sel).innerHTML = `
       <div style='display: none;' id='vgt-balloon' class="notification">
         <button class="delete"></button>
-        <span>Loading..</span>
+        <span class="msg">Loading..</span>
       </div>
     `;
     $('#vgt-balloon .delete').addEventListener('click',function(){
@@ -42,7 +43,7 @@ function Vegeta(){
       $bal.classList.add('is-'+type);
     }
     $bal.classList.add('notification');
-    $bal.innerHTML = msg;
+    $('.msg',$bal).innerHTML = msg;
     $bal.style.display = "";
   }
   this.notif_info = function(msg){
