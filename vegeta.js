@@ -31,11 +31,11 @@ function Vegeta(){
   this.notif = function(msg, type){
     $bal = $('#vgt-balloon');
     if(type){
-      $('#vgt-balloon').classList.add('is-'+type);
+      $bal.classList.add('is-'+type);
     }
-    $('#vgt-balloon').classList.add('notification');
-    $('#vgt-balloon span').innerHTML = msg;
-    $('#vgt-balloon').style.visibility = "visible";
+    $bal.classList.add('notification');
+    $bal.innerHTML = msg;
+    $bal.style.visibility = "visible";
   }
   this.notif_info = function(msg){
     this.notif(msg, 'info');
