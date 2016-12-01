@@ -1,34 +1,53 @@
 function Vegeta(){
-
+  
+  var $ = function(sel, parent){
+    parent = parent || document;
+    if (sel[0] == "#" && sel.indexOf(' ') == -1){// #id => by ID (faster), else query selector
+      return parent.getElementById( sel.slice(1) ) || parent.createElement("div");
+    }
+    return parent.querySelector(sel) || parent.createElement("div");
+  };
+  
+  function resetClasses(el){
+    var classes = ["is-default","is-danger","is-success","is-primary","is-warning","is-info"];
+    for (var i = 0; i < classes.length; i ++){
+      el.classList.remove(classes[i]);
+    }
+  }
+    
   this.bind_nav_toggle = function(){
     var $toggle = $('.nav-toggle');
     var $menu = $('.nav-menu');
-    $toggle.click(function() {
-      $(this).toggleClass('is-active');
-      $menu.toggleClass('is-active');
+    $toggle.addEventListener('click',function() {
+      this.classList.toggle('is-active');
+      $menu.classList.toggle('is-active');
     });
   };
-
+  
   this.bind_notif = function(sel){
-    $(sel).html(`
+    $(sel).innerHTML = `
       <div style='display: none;' id='vgt-balloon' class="notification">
         <button class="delete"></button>
-        <span>Loading..</span>
+        <span class="msg">Loading..</span>
       </div>
-    `);
-    $('#vgt-balloon .delete').click(function(){
-      $('#vgt-balloon').hide();
+    `;
+    $('#vgt-balloon .delete').addEventListener('click',function(){
+      $('#vgt-balloon').style.display = "none";
     });
   };
-
+  
   this.notif = function(msg, type){
-    $('#vgt-balloon').removeClass();
+    $bal = $('#vgt-balloon');
     if(type){
-      $('#vgt-balloon').addClass('is-'+type);
+      resetClasses($bal);
+      $bal.classList.add('is-'+type);
     }
-    $('#vgt-balloon').addClass('notification');
-    $('#vgt-balloon span').html(msg);
-    $('#vgt-balloon').show();
+    $bal.classList.add('notification');
+    $('.msg',$bal).innerHTML = msg;
+    $bal.style.display = "";
+  }
+  this.notif_default = function(msg){
+    this.notif(msg, 'default');
   }
   this.notif_info = function(msg){
     this.notif(msg, 'info');
