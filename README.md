@@ -1,6 +1,8 @@
 # vegeta.js
-JavaScript for Bulma.io
 [![npm](https://img.shields.io/npm/v/vegeta.js.svg)](https://www.npmjs.com/package/vegeta.js)
+![license](https://img.shields.io/github/license/diewland/vegeta.js.svg)
+
+JavaScript for Bulma.io
 
 ### installation
 ```npm install vegeta.js```
