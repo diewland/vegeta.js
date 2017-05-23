@@ -5,7 +5,7 @@ function Vegeta(){
     if (sel[0] == "#" && sel.indexOf(' ') == -1){// #id => by ID (faster), else query selector
       return parent.getElementById( sel.slice(1) ) || parent.createElement("div");
     }
-    return parent.querySelector(sel) || parent.createElement("div");
+    return parent.querySelector(sel);
   };
   
   function resetClasses(el){
@@ -19,14 +19,17 @@ function Vegeta(){
     var $toggle = $('.nav-toggle');
     var $menu = $('.nav-menu');
     $toggle.addEventListener('click',function() {
-      this.classList.toggle('is-active');
+      $toggle.classList.toggle('is-active');
       $menu.classList.toggle('is-active');
     });
     // https://stackoverflow.com/a/18504302/466693
     $toggle.setAttribute('tabindex', 0);
-    $toggle.addEventListener('blur',function() {
-      this.classList.toggle('is-active');
-      $menu.classList.toggle('is-active');
+    $toggle.addEventListener('blur',function(e) {
+      // do not hide menu when click menu item
+      if((e.relatedTarget != null) && (!e.relatedTarget.classList.contains('nav-item'))){
+        $toggle.classList.remove('is-active');
+        $menu.classList.remove('is-active');
+      }
     });
   };
   
