@@ -22,6 +22,12 @@ function Vegeta(){
       this.classList.toggle('is-active');
       $menu.classList.toggle('is-active');
     });
+    // https://stackoverflow.com/a/18504302/466693
+    $toggle.setAttribute('tabindex', 0);
+    $toggle.addEventListener('blur',function() {
+      this.classList.toggle('is-active');
+      $menu.classList.toggle('is-active');
+    });
   };
   
   this.bind_notif = function(sel){
