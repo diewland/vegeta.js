@@ -1,101 +1,93 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.3/css/bulma.min.css">
-<style>
-  /* custom this page only */
-  .button {
-    margin-bottom: 10px;
-  }
-  div.notification {
-    width: 50%;
-    margin: 0px auto;
-  }
-</style>
-
-<section class="hero is-large">
-  <!-- Hero header: will stick at the top -->
-  <div class="hero-head">
-    <header class="nav">
-      <div class="nav-left">
-        <a class="nav-item is-brand" href="#">
-          <h1 class='title'>Vegeta.js</h1>
-        </a>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Vegeta!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.0/css/bulma.min.css">
+  </head>
+  <body>
+    <section class="hero is-fullheight">
+      <!-- Hero header: will stick at the top -->
+      <div class="hero-head">
+        <nav class="navbar is-transparent">
+          <div class="navbar-brand">
+            <a class="navbar-item" href="https://github.com/diewland/vegeta.js">
+             { Vegeta.js }
+            </a>
+            <div class="navbar-burger burger" data-target="nav_menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div id="nav_menu" class="navbar-menu">
+            <div class="navbar-start">
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link is-active">
+                  Notifications
+                </a>
+                <div class="notif navbar-dropdown is-boxed">
+                  <a class="navbar-item">Default</a>
+                  <a class="navbar-item">Info</a>
+                  <a class="navbar-item">Primary</a>
+                  <a class="navbar-item">Success</a>
+                  <a class="navbar-item">Warning</a>
+                  <a class="navbar-item">Danger</a>
+                </div>
+              </div>
+            </div>
+            <div class="navbar-end">
+              <a class="navbar-item" href="https://github.com/diewland/vegeta.js" target="_blank">
+                <span class="icon" style="color: #333;">
+                  <i class="fa fa-github"></i>
+                </span>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </nav>
       </div>
-      <div class="nav-center">
-        <a class="nav-item" href="#">
-          JavaScript for Bulma.io
-          &nbsp;
-          <span class="icon">
-            <i class="fa fa-cogs"></i>
-          </span>
-        </a>
+      <!-- Hero content: will be in the middle -->
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <div id='notif_here'></div>
+          <br>
+          <h1 class="title">
+            Vegeta.js
+          </h1>
+          <h2 class="subtitle">
+            JavaScript for Bulma.io
+          </h2>
+        </div>
       </div>
-      <span class="nav-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </span>
-      <div class="nav-right nav-menu">
-        <a class="nav-item" href="http://bulma.io/">
-          Bulma.io
-        </a>
-        <span class="nav-item">
-          <a class="button" href='https://github.com/diewland/vegeta-js'>
-            <span class="icon">
-              <i class="fa fa-github"></i>
-            </span>
-            <span>GitHub</span>
-          </a>
-        </span>
+      <!-- Hero footer: will stick at the bottom -->
+      <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+          <div class="container">
+            <ul>
+              <li><a>Ready for bulma 0.5.0</a></li>
+            </ul>
+          </div>
+        </nav>
       </div>
-    </header>
-  </div>
+    </section>
+    <script src='vegeta.js'></script>
+    <script>
 
-  <!-- Hero content: will be in the middle -->
-  <div class="hero-body">
-    <div class="container has-text-centered">
+      // bind burger, notification
+      Vegeta.bind_nav_burger();
+      Vegeta.bind_notif('notif_here');
 
-      <h1 class="title">Notifications</h1>
-      <a class='button is-large' id='btn-default' href='#/'>default</a>
-      <a class='button is-info is-large' id='btn-info' href='#/'>info</a>
-      <a class='button is-primary is-large' id='btn-primary' href='#/'>primary</a>
-      <a class='button is-success is-large' id='btn-success' href='#/'>success</a>
-      <a class='button is-warning is-large' id='btn-warning' href='#/'>warning</a>
-      <a class='button is-danger is-large' id='btn-danger' href='#/'>danger</a>
+      // bind notification demo to navbar
+      document.querySelectorAll('.notif a').forEach(function(el){
+        var label = el.innerHTML.toLowerCase();
+        el.addEventListener('click', function(){
+          Vegeta.notif('Hello '+ label +' message', label);
+        });
+      });
 
-      <div class='trunk'>Paste wherever you wanna notify</div>
-
-    </div>
-  </div>
-
-</section>
-
-<script src='./vegeta.js'></script>
-<script>
-
-  // new vegeta!
-  var v = new Vegeta();
-
-  v.bind_nav_toggle();    // bind navigation toggle
-  v.bind_notif('.trunk'); // bind notification to <div class='.trunk' />
-
-  // call notifications
-  document.getElementById('btn-default').addEventListener('click',function(){
-    v.notif_default('Default message');
-  });
-  document.getElementById('btn-info').addEventListener('click',function(){
-    v.notif_info('Info message');
-  });
-  document.getElementById('btn-primary').addEventListener('click',function(){
-    v.notif_primary('Primary message');
-  });
-  document.getElementById('btn-success').addEventListener('click',function(){
-    v.notif_success('Success message');
-  });
-  document.getElementById('btn-warning').addEventListener('click',function(){
-    v.notif_warning('Warning message');
-  });
-  document.getElementById('btn-danger').addEventListener('click',function(){
-    v.notif_danger('Danger message');
-  });
-
-</script>
+    </script>
+  </body>
+</html>
